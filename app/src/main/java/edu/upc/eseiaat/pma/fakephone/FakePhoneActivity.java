@@ -10,18 +10,18 @@ import android.widget.Toast;
 
 public class FakePhoneActivity extends AppCompatActivity {
 
-    EditText edit_num = (EditText) findViewById(R.id.edit_num);
+    EditText edit_num;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fake_phone);
+        edit_num = (EditText) findViewById(R.id.edit_num);
     }
 
     public void clicat (View v){
         Button boto = (Button) v;
-
-        String num = edit_num.getText().toString() + boto.getId();
+        String num = edit_num.getText().toString() + boto.getText();
         edit_num.setText(num);
 
         Log.i("click","Has clicat el boto!");
@@ -29,7 +29,7 @@ public class FakePhoneActivity extends AppCompatActivity {
     }
 
     public void trucada (View v){
-        String trucant = String.format("Trucant al ", edit_num.getText());
+        String trucant = String.format("Trucant al %s", edit_num.getText());
         Toast.makeText(FakePhoneActivity.this, trucant, Toast.LENGTH_SHORT).show();
         finish();
 
